@@ -97,14 +97,33 @@ public class Controller {
             String create = "create table Address (street varchar(32), city varchar(32), zipcode INT, state varchar(32), CONSTRAINT Address_PK Primary Key (street, city, zipcode, state))";
             Statement stmt = connection.createStatement();
             stmt.execute(create);
+            connection.close();
         } catch (SQLException e) {
             System.out.println("Error creating Address");
             System.out.println("SQL State: " + e.getErrorCode());
             System.out.println("Error Code: " + e.getSQLState());
             System.out.println("Message: " + e.getMessage());
         }
-        //TODO insert data into Address
+        insertInto("1 Wong Street", "Worcester", Integer.parseInt("01609"), "MA");
+        insertInto("2 Matt Road", "Worcester", Integer.parseInt("01609"), "MA");
+        insertInto("3 Nick Lane", "Acton", Integer.parseInt("01609"), "MA");
         resetButton.setText("Reset!");
+    }
+
+    public void insertInto(String street, String city, int zip, String state) {
+        Connection connection = connect();
+        try {
+            String insert = "insert into Address values (?, ?, ?, ?)";
+            PreparedStatement pstmt = connection.prepareStatement(insert);
+            pstmt.setString(1, street);
+            pstmt.setString(2, city);
+            pstmt.setInt(3, zip);
+            pstmt.setString(4, state);
+            pstmt.execute();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Message: " + e.getMessage());
+        }
     }
 
     @FXML
@@ -156,6 +175,7 @@ public class Controller {
             while (rset.next()) {
                 searchResults = searchResults + rset.getString("street") + "\n";
             }
+            connection.close();
         } catch (SQLException e) {
             System.out.println("Error: " + e);
         }
