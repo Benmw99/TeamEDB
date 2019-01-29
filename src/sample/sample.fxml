@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1568.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="726.0" prefWidth="755.0">
+               <children>
+                  <HBox prefHeight="217.0" prefWidth="1482.0">
+                     <children>
+                        <TextField fx:id="StreetText" promptText="Street" />
+                        <TextField fx:id="CityText" promptText="City" />
+                        <TextField fx:id="StateText" promptText="State" />
+                        <TextField fx:id="ZipText" promptText="Zip Code" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="233.0" prefWidth="670.0">
+                     <children>
+                        <Button fx:id="resetButton" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="31.0" prefWidth="84.0" text="Reset DB" />
+                        <Button fx:id="submitAddress" mnemonicParsing="false" text="Submit" onMouseClicked="#submitAddressData"/>
+                        <TextField fx:id="citySearch" prefHeight="31.0" prefWidth="124.0" promptText="City" />
+                        <Button fx:id="viewAddress" mnemonicParsing="false" text="View" onMouseClicked="#viewAddresses"/>
+                        <TextArea fx:id="resultAddress" prefHeight="231.0" prefWidth="340.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="265.0" prefWidth="1482.0">
+                     <children>
+                        <Button fx:id="chooseButton" mnemonicParsing="false" onMouseClicked="#choose" text="Choose Image" />
+                        <Button fx:id="submitImage" disable="true" mnemonicParsing="false" onMouseClicked="#submit" text="Submit to DB" />
+                        <Label fx:id="textUpdates" text="Not yet submitted" />
+                        <TextField fx:id="fileText" promptText="File Name" />
+                        <Button fx:id="viewImage" mnemonicParsing="false" onMouseClicked="#view" text="View from DB" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <ImageView fx:id="imageDisplay" fitHeight="664.0" fitWidth="721.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="imageName" text="File Name" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
